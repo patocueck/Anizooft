@@ -13,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Inscribir Mascota</title>
+    <title>Anizooft</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -125,7 +125,7 @@
                                                 <option label="(Seleccione)" value="" selected>Seleccione...</option>
 		                                           <c:if  test="${!empty duenos}">
 		                                                <c:forEach items="${duenos}" var="cur">
-		                                                   <option value="${cur.rutdueño}">${cur.rutdueño} - ${cur.nombre}</option>
+		                                                   <option value="${cur.rutdueño}">${cur.rutdueño} - ${cur.nombre} ${cur.apellido}</option>
 		                                                </c:forEach>
 		                                           </c:if>
 		                                   </select>

@@ -14,6 +14,8 @@ cl\usm\tdsw\anizooft\dao\impl\MascotaDaoImp.class
 cl\usm\tdsw\anizooft\model\Mascota.class
 cl\usm\tdsw\anizooft\utils\AnizooftUtils.class
 cl\usm\tdsw\anizooft\model\DosiPK.class
+cl\usm\tdsw\anizooft\service\EmpleadoService.class
+cl\usm\tdsw\anizooft\dao\impl\EmpleadoDaoImp.class
 cl\usm\tdsw\anizooft\model\Detalleatencion.class
 cl\usm\tdsw\anizooft\service\imp\AtencionServiceImp.class
 cl\usm\tdsw\anizooft\dao\AtencionDao.class
@@ -32,3 +34,5 @@ cl\usm\tdsw\anizooft\config\CustomContextLoaderListener.class
 cl\usm\tdsw\anizooft\dao\DuenoDao.class
 cl\usm\tdsw\anizooft\service\AtencionService.class
 cl\usm\tdsw\anizooft\service\imp\DuenoServiceImp.class
+cl\usm\tdsw\anizooft\dao\EmpleadoDao.class
+cl\usm\tdsw\anizooft\service\imp\EmpleadoServiceImp.class

@@ -10,7 +10,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Mascota</title>
+    <title>Anizooft</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -92,7 +92,7 @@
                         </li>
                         
                         <li>
-                            <a href="../Mascota/Create"><i class="fa fa-edit fa-fw"></i> Ingresar Ficha de Atención</a>
+                            <a href="../FichaAtencion/Create"><i class="fa fa-edit fa-fw"></i> Ingresar Ficha de Atención</a>
                         </li>
                         <li>
                             <a href="../"><i class="fa fa-edit fa-fw"></i> Volver</a>
@@ -115,7 +115,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Listado de fichas
+                            Listado de fichas 
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -137,10 +137,14 @@
 	                                            <td>
 	                                            	${curr.idatencion}
 	                                            </td>
-	                                            <td>${curr.empleados}</td>
+	                                            <td>
+	                                            	<c:forEach items="${curr.empleados}" var="emp">
+	                                     				${emp.nombre}
+	                                     			</c:forEach>       
+	                                            </td>
 	                                            <td>${curr.mascota.nombre}</td>
 	                                            <td>${curr.estadoatencion}</td>
-	                                            <td>${curr.sala}</td>
+	                                            <td>${curr.sala.nombre}</td>
 	                                            <td>
 	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i>
 	                                            	<a href='../Convenio/Details/${curr.idatencion}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i>	                                            

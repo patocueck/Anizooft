@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="anizooftPUN" transaction-type="JTA">
+<!-- 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>jdbc/anizooft</jta-data-source>
+		
+		<class>cl.usm.tdsw.anizooft.model.Analisi</class>
+		<class>cl.usm.tdsw.anizooft.model.Atencion</class>
+		<class>cl.usm.tdsw.anizooft.model.Boleta</class>
+		<class>cl.usm.tdsw.anizooft.model.Categoria</class>
+		<class>cl.usm.tdsw.anizooft.model.Detalleatencion</class>
+		<class>cl.usm.tdsw.anizooft.model.DetalleatencionPK</class>
+		<class>cl.usm.tdsw.anizooft.model.Dosi</class>
+		<class>cl.usm.tdsw.anizooft.model.DosiPK</class>
+		<class>cl.usm.tdsw.anizooft.model.Dueño</class>
+		<class>cl.usm.tdsw.anizooft.model.Empleado</class>
+		<class>cl.usm.tdsw.anizooft.model.Mascota</class>
+		<class>cl.usm.tdsw.anizooft.model.Medicamento</class>
+		<class>cl.usm.tdsw.anizooft.model.Productoservicio</class>
+		<class>cl.usm.tdsw.anizooft.model.Receta</class>
+		<class>cl.usm.tdsw.anizooft.model.Reserva</class>
+		<class>cl.usm.tdsw.anizooft.model.Sala</class>
+		<class>cl.usm.tdsw.anizooft.model.Sucursal</class>
+		<properties>
+<!-- 			<property name="eclipselink.target-server" value="None"/> -->
+			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform" />
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Inscribir Dueño</title>
+    <title>Notificación</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -98,7 +98,7 @@
                         </li>
                         
                         <li>
-                            <a href="dueno.html"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="/Anizooft/" onclick="javascript:history.go(-1)"><i class="fa fa-edit fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>
@@ -110,7 +110,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Inscribir Dueño</h1>
+                    <h1 class="page-header">Notificación</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
