@@ -101,6 +101,9 @@
                         <li>
                             <a href="FichaAtencion/Index"><i class="fa fa-edit fa-fw"></i> Ficha de Atención</a>
                         </li>
+                         <li>
+                            <a href="Reserva/Index"><i class="fa fa-edit fa-fw"></i> Reserva de Hora</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
