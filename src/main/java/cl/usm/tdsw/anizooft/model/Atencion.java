@@ -70,7 +70,7 @@ public class Atencion implements Serializable {
 	private List<Detalleatencion> detalleatencions;
 
 	//bi-directional many-to-many association to Empleado
-	@ManyToMany(mappedBy="atencions")
+	@ManyToMany(fetch = FetchType.EAGER, mappedBy="atencions")
 	private List<Empleado> empleados;
 
 	//bi-directional many-to-one association to Receta
