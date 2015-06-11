@@ -132,8 +132,8 @@
 	                                            </td>
 	                                            <td>${curr.nombre}</td>
 	                                            <td>
-	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i>
-	                                            	<a href='../Convenio/Details/${curr.rutdueño}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i>	                                            
+	                                            	<a href='../Dueno/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i>
+	                                            	<a href='../Dueno/Details/${curr.rutdueño}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i>	                                            
 	                                            </td>
                                         	</tr>
                                          </c:forEach>
