@@ -1,8 +1,11 @@
 package cl.usm.tdsw.anizooft.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,14 +43,14 @@ public class Empleado implements Serializable {
 	private BigDecimal tipousuario;
 
 	//bi-directional many-to-many association to Atencion
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 		name="PARTICIPACION"
 		, joinColumns={
-			@JoinColumn(name="RUTEMPLEADO")
+			@JoinColumn(name="RUTEMPLEADO", referencedColumnName="RUTEMPLEADO")
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="IDATENCION")
+			@JoinColumn(name="IDATENCION", referencedColumnName="IDATENCION")
 			}
 		)
 	private List<Atencion> atencions;
@@ -139,6 +142,17 @@ public class Empleado implements Serializable {
 	public void setAtencions(List<Atencion> atencions) {
 		this.atencions = atencions;
 	}
+	
+	public Atencion addAtencion(Atencion atencion) {
+		if ( this.atencions == null )
+			this.atencions = new ArrayList<Atencion>();
+		if (!getAtencions().contains(atencion))
+			this.atencions.add(atencion);
+		if (!atencion.getEmpleados().contains(this))
+			atencion.addEmpleado(this);
+
+		return atencion;
+	}
 
 	public Sucursal getSucursal() {
 		return this.sucursal;
@@ -147,5 +161,9 @@ public class Empleado implements Serializable {
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
 	}
-
+	
+	@Override
+	public String toString(){
+		return this.rutempleado + " - "+ this.nombre + " " + this.apellido;
+	}
 }

@@ -9,7 +9,9 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import cl.usm.tdsw.anizooft.dao.AtencionDao;
+import cl.usm.tdsw.anizooft.dao.EmpleadoDao;
 import cl.usm.tdsw.anizooft.model.Atencion;
+import cl.usm.tdsw.anizooft.model.Empleado;
 import cl.usm.tdsw.anizooft.service.AtencionService;
 
 @Service
@@ -17,6 +19,8 @@ public class AtencionServiceImp implements AtencionService {
 
 	@Autowired
 	private AtencionDao atencionDao;
+	@Autowired
+	private EmpleadoDao empleadoDao;
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -37,6 +41,7 @@ public class AtencionServiceImp implements AtencionService {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void add(Atencion atencion) {
+		
 		atencionDao.add(atencion);		
 	}
 

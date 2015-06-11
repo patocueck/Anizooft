@@ -137,7 +137,7 @@
 	                                            <td>
 	                                            	${curr.idatencion}
 	                                            </td>
-	                                            <td>
+	                                            <td>	                                            
 	                                            	<c:forEach items="${curr.empleados}" var="emp">
 	                                     				${emp.nombre}
 	                                     			</c:forEach>       

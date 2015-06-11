@@ -1,8 +1,11 @@
 package cl.usm.tdsw.anizooft.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -71,6 +74,7 @@ public class Atencion implements Serializable {
 
 	//bi-directional many-to-many association to Empleado
 	@ManyToMany(fetch = FetchType.EAGER, mappedBy="atencions")
+	//@ManyToMany(mappedBy="atencions")
 	private List<Empleado> empleados;
 
 	//bi-directional many-to-one association to Receta
@@ -278,7 +282,25 @@ public class Atencion implements Serializable {
 	public void setEmpleados(List<Empleado> empleados) {
 		this.empleados = empleados;
 	}
+	
+	public Empleado addEmpleado(Empleado empleado) {
+		if (this.empleados == null)
+			this.empleados = new ArrayList<Empleado>();
+		if (!getEmpleados().contains(empleado))
+			this.empleados.add(empleado);
+		if (!empleado.getAtencions().contains(this))
+			empleado.addAtencion(this);
 
+		return empleado;
+	}
+	
+//	public Empleado removeReceta(Empleado empleado) {
+//		getRecetas().remove(empleado);
+//		empleado.setAtencion(null);
+//
+//		return empleado;
+//	}
+	
 	public List<Receta> getRecetas() {
 		return this.recetas;
 	}
