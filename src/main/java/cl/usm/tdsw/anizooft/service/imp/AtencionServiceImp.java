@@ -45,4 +45,15 @@ public class AtencionServiceImp implements AtencionService {
 		atencionDao.add(atencion);		
 	}
 
+	@Override
+	public boolean update(Atencion atencion) {
+		try{
+			atencionDao.update(atencion);
+			return true;
+		}catch(Exception e){
+			return false;
+		}	
+		
+	}
+
 }

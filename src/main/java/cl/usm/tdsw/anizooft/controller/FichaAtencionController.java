@@ -7,9 +7,11 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -118,4 +120,36 @@ public class FichaAtencionController {
 			
 			
 		}
+		
+		//Se llama al cargar la pagina
+		@RequestMapping(value="/Atender/{id}", method=RequestMethod.GET)
+		public ModelAndView atenderGet(@PathVariable String id){
+			ModelAndView m = new ModelAndView("FichaAtencion/Atender");
+			
+			long idlong = Long.parseLong(id);
+			//Trae una atención para llenar datos
+     		m.addObject("atencion", atencionService.getById(idlong)); //Se devuelve a la vista atención = modelAttribute=
+			
+			return m;
+		}	
+		
+		//Se llama al cargar la pagina
+			@RequestMapping(value="/Atender", method=RequestMethod.POST)
+			public ModelAndView atenderPost(@ModelAttribute("atencion") Atencion atencion){
+				
+				
+				ModelAndView mensaje = new ModelAndView("Varios/Mensaje");
+				
+				if (atencionService.update(atencion)){
+					mensaje.addObject("mensaje", "xxxxx agregada con éxito.");
+					mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+					return mensaje;
+				}else{
+					mensaje.addObject("mensaje", "xxxxxxx agregada con éxito.");
+					mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+					return mensaje;
+				}
+				
+				
+			}	
 }

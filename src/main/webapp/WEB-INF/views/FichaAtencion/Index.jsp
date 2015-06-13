@@ -146,8 +146,9 @@
 	                                            <td>${curr.estadoatencion}</td>
 	                                            <td>${curr.sala.nombre}</td>
 	                                            <td>
-	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i>
-	                                            	<a href='../Convenio/Details/${curr.idatencion}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i>	                                            
+	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i></a>
+	                                            	<a href='../Convenio/Details/${curr.idatencion}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i></a>
+	                                            	<a href='../FichaAtencion/Atender/${curr.idatencion}'><i class='fa fa-edit fa-lg' title='Atender'></i></a>                                            
 	                                            </td>
                                         	</tr>
                                          </c:forEach>
