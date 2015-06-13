@@ -16,13 +16,13 @@ public class Reserva implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="RESERVA_IDRESERVA_GENERATOR" )
+	@SequenceGenerator(name="RESERVA_IDRESERVA_GENERATOR" , sequenceName="MASCOTA_SEQ", allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="RESERVA_IDRESERVA_GENERATOR")
 	private long idreserva;
 
 	private String estadoreserva;
 
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechahora;
 
 	//bi-directional many-to-one association to Atencion

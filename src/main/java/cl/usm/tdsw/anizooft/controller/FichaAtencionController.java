@@ -50,7 +50,7 @@ public class FichaAtencionController {
 		return m;
 	}
 	
-	//Se llama al cargar el form de creacion
+		//Se llama al cargar el form de creacion
 		@RequestMapping(value="/Create", method=RequestMethod.GET)
 		public ModelAndView creatGet(){
 			ModelAndView m = new ModelAndView("FichaAtencion/Create");

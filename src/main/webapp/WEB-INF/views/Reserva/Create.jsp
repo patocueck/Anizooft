@@ -103,7 +103,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Ficha de Atención</h1>
+                    <h1 class="page-header">Reserva</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -112,15 +112,12 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Ingreso de Ficha de Atención
+                            Ingreso de Reserva
                         </div>
-                        <form:form action="/Anizooft/FichaAtencion/Create" modelAttribute="mascota" method="post">
+                        <form:form action="/Anizooft/Reserva/Create" modelAttribute="reserva" method="post">
 	                        <div class="panel-body">
 	                            <div class="row">
 	                                <div class="col-lg-6">
-	                                	<div class="form-group">
-	                                		<button type="submit" id="desdeReserva" class="btn btn-default">Crear desde Reserva...</button>
-	                                	</div>
                                         <div class="form-group">
                                             <label>Dueños</label>
                                             <select name="rutDueno" id="rutDueno" class="form-control script-obligatorio">
@@ -142,41 +139,8 @@
 		                                   <input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
 		                                   
                                         </div>
-                                        <div class="form-group">
-                                            <label>Mascotas</label>
-                                            <select name="idMascota" id="idMascota" class="form-control script-obligatorio">
-                                                <option label="(Seleccione)" value="" selected>Seleccione...</option>
-		                                           <c:if  test="${!empty mascotas}">
-		                                                <c:forEach items="${mascotas}" var="mascota">
-		                                                   <option value="${mascota.idmascota}">${mascota.idmascota} - ${mascota.nombre}</option>
-		                                                </c:forEach>
-		                                           </c:if>
-		                                   </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Veterinario</label>
-                                            <select name="rutEmpleado" id="rutEmpleado" class="form-control script-obligatorio">
-                                                <option label="(Seleccione)" value="">Seleccione..</option>
-		                                          
-		                                           <c:if  test="${!empty empleados}">
-		                                          
-		                                                <c:forEach items="${empleados}" var="cur">
-		                                                	
-			                                                <c:choose>
-			                                                    <c:when test="${rutEmpleado == cur.rutempleado}">
-			                                                    	<option value="${cur.rutempleado}" selected="selected">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:when>
-			                                                    <c:otherwise>
-			                                                        <option value="${cur.rutempleado}">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:otherwise>
-			                                                </c:choose>
-		                                                   
-		                                                </c:forEach>
-		                                           </c:if>
-		                                   </select>
-		                                   <input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
-		                                   
-                                        </div>
+                                        
+                                        
                                         <div class="form-group">
                                        <div class="col-lg-4">
                                            <label>Año</label>
@@ -305,14 +269,7 @@
     <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
-    	$("#desdeReserva").click(function(){
-    		$("form").attr("action", "/Anizooft/Reserva/Index");
-    	});
     	
-    	$("#rutDueno").change(function(){
-    		$("#selectMascota").val("S");
-    		$("form").submit();
-    	});
     
         //Limpia formulario
         $("#limpiarForm").click(function(){
