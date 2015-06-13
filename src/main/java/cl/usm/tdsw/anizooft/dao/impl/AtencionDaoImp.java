@@ -52,4 +52,15 @@ public class AtencionDaoImp implements AtencionDao {
 		
 	}
 
+	@Override
+	public boolean update(Atencion atencion) {
+		try{
+			em.merge(atencion);
+			return true;
+		}catch(Exception e){
+			return false;
+		}
+		
+	}
+
 }

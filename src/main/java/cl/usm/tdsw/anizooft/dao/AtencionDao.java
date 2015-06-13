@@ -9,4 +9,5 @@ public interface AtencionDao {
 	public List<Atencion> getAll();
 	public Atencion getById(long idatencion);
 	public void add(Atencion atencion);
+	public boolean update(Atencion atencion);
 }
