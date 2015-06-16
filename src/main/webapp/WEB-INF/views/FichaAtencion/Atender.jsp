@@ -118,6 +118,8 @@
 	                        <div class="panel-body">
 	                            <div class="row">
 	                                <div class="col-lg-6">
+	                                	<input type="hidden" id="idatencion" name="idatencion" value="${atencion.idatencion}"/>
+	                                	<input type="hidden" id="estadoatencion" name="estadoatencion" value="${atencion.estadoatencion}"/>
                                         <div class="form-group">
                                             <label>Mascota:  </label>  ${atencion.mascota.nombre}
                             				<div class="form-group">
@@ -126,16 +128,24 @@
 												
 											</div>
 										</div>
-										<input type="hidden" id="idatencion" name="idatencion" value="${atencion.idatencion}"/> 
+										 
 										<div class="form-group">
 											<label>Tratamiento</label>
 											<form:textarea path="consultatratamiento" class="form-control script-obligatorio"/>
+										</div>
+										
+										<div class="form-group">
+											<label>Observación</label>
+											<form:textarea path="observacion" class="form-control script-obligatorio"/>
 										</div>
 										<!-- Agregar análisis como text area, observacion y receta -->
 										
 			                    
 			                            <button type="reset" id="limpiarForm" class="btn btn-default">Cancelar</button>
-			                            <button type="submit"  onclick="return confirma();" class="btn btn-default">Guardar</button>
+			                            <button type="submit" onclick="return cancela();" class="btn btn-default">Cancelar Atención</button>
+			                            <button type="submit" onclick="return confirma();" class="btn btn-default">Guardar</button>
+			                            
+			                            <input type="hidden" id="accion" name="accion" value=""/>
 	                                </div>
 	                                <!-- /.col-lg-6 (nested) -->
 	                            </div>
@@ -267,8 +277,16 @@
             alert("Los campos marcados con rojo son obligatorios.");
             return false;
         }
+        
+        //Modifica el hidden a GUARDAR
+        $("#accion").val("GUARDAR");
         return true;
-        //$('#convenio').submit();
+    }
+    
+    function cancela(){
+    	//Modifica el hidden a CANCELARATENCION
+        $("#accion").val("CANCELARATENCION");
+        return;	
     }
     //
 // Validador de Rut

@@ -56,4 +56,16 @@ public class AtencionServiceImp implements AtencionService {
 		
 	}
 
+	@Override
+	public Atencion MergeAtencion(Atencion atencion) {
+		//Trae atención original
+		Atencion atencionOriginal = getById(atencion.getIdatencion());
+		
+		atencion.setEmpleados(atencionOriginal.getEmpleados()); //Empleados - Veterinarios
+		atencion.setMascota(atencionOriginal.getMascota()); //Mascota
+		atencion.setFechahora(atencionOriginal.getFechahora()); //Fecha Hora
+		atencion.setSala(atencionOriginal.getSala()); //Sala
+		return atencion;
+	}
+
 }

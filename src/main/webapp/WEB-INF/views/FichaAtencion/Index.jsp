@@ -148,7 +148,7 @@
 	                                            <td>
 	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i></a>
 	                                            	<a href='../Convenio/Details/${curr.idatencion}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i></a>
-	                                            	<a href='../FichaAtencion/Atender/${curr.idatencion}'><i class='fa fa-edit fa-lg' title='Atender'></i></a>                                            
+	                                            	<a href='../FichaAtencion/Atender/${curr.idatencion}'><i class='fa fa-paw fa-lg' title='Atender/Cancelar'></i></a>                                            
 	                                            </td>
                                         	</tr>
                                          </c:forEach>

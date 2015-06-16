@@ -10,5 +10,6 @@ public interface AtencionService {
 		public Atencion getById(long idatencion);
 		public void add(Atencion atencion);
 		public boolean update(Atencion atencion);
+		public Atencion MergeAtencion(Atencion atencion);
 		
 }

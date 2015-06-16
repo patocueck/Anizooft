@@ -110,7 +110,7 @@ public class FichaAtencionController {
 			empleados.add(empleadoService.getByRut(Long.parseLong(rutEmpleado)));
 			atencion.setEmpleados(empleados);
 			atencion.setEstadoatencion("PENDIENTE");
-			atencion.setObservacion(hora);
+			//atencion.setObservacion(hora);
 			//atencion.setSala(sala);
 			
 			atencionService.add(atencion);
@@ -135,21 +135,53 @@ public class FichaAtencionController {
 		
 		//Se llama al cargar la pagina
 			@RequestMapping(value="/Atender", method=RequestMethod.POST)
-			public ModelAndView atenderPost(@ModelAttribute("atencion") Atencion atencion){
-				
-				
+			public ModelAndView atenderPost(@ModelAttribute("atencion") Atencion atencion,
+					@ModelAttribute("accion")String accion
+					){
 				ModelAndView mensaje = new ModelAndView("Varios/Mensaje");
 				
-				if (atencionService.update(atencion)){
-					mensaje.addObject("mensaje", "xxxxx agregada con éxito.");
-					mensaje.addObject("urlRetorno","../FichaAtencion/Index");
-					return mensaje;
-				}else{
-					mensaje.addObject("mensaje", "xxxxxxx agregada con éxito.");
-					mensaje.addObject("urlRetorno","../FichaAtencion/Index");
-					return mensaje;
+				if (atencion.getEstadoatencion().equalsIgnoreCase("PENDIENTE")){
+					//Si el botón queda con valor GUARDAR
+					if (accion.equalsIgnoreCase("GUARDAR")){
+						
+						atencion.setEstadoatencion("CERRADA");
+						atencion = atencionService.MergeAtencion(atencion);
+						
+						if (atencionService.update(atencion)){
+							mensaje.addObject("mensaje", "Mascota atendida con éxito.");
+							mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+						
+						}else{
+							mensaje.addObject("mensaje", "No se pudo atener a la mascota, inténtelo nuevamente.");
+							mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+							
+						}
+					}
+					//Si se cancela la atención
+					else if (accion.equalsIgnoreCase("CANCELARATENCION")){
+						atencion.setEstadoatencion("CANCELADA");
+						atencion = atencionService.MergeAtencion(atencion);
+						
+						if (atencionService.update(atencion)){
+							mensaje.addObject("mensaje", "Atención cancelada con éxito.");
+							mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+							
+						}
+						else{
+							mensaje.addObject("mensaje", "No se pudo cancelar la atención, inténtelo nuevamente.");
+							mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+							
+						}
+					}
+					else {
+						mensaje.addObject("mensaje", "Ha ocurrido un error inténtelo nuevamente.");
+						mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+					}
 				}
-				
-				
+				else {
+					mensaje.addObject("mensaje", "La atención está " + atencion.getEstadoatencion() + " no se puede atender ni cancelar.");
+					mensaje.addObject("urlRetorno","../FichaAtencion/Index");
+				}
+				return mensaje;
 			}	
 }
