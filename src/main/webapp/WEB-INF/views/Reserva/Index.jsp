@@ -93,10 +93,10 @@
                         </li>
                         
                         <li>
-                            <a href="../Reserva/Create"><i class="fa fa-edit fa-fw"></i> Ingresar Reserva</a>
+                            <a href="../Reserva/Create"><i class="fa fa-clock-o fa-fw"></i> Ingresar Reserva</a>
                         </li>
                         <li>
-                            <a href="../"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="../"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>

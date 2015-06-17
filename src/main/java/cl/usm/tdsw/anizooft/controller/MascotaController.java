@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cl.usm.tdsw.anizooft.model.Atencion;
 import cl.usm.tdsw.anizooft.model.Dueño;
 import cl.usm.tdsw.anizooft.model.Mascota;
+import cl.usm.tdsw.anizooft.service.AtencionService;
 import cl.usm.tdsw.anizooft.service.DuenoService;
+import cl.usm.tdsw.anizooft.service.EmpleadoService;
 import cl.usm.tdsw.anizooft.service.MascotaService;
 
 @Controller
@@ -20,10 +23,16 @@ import cl.usm.tdsw.anizooft.service.MascotaService;
 public class MascotaController {
 	
 	@Autowired
+	private AtencionService atencionService;
+	
+	@Autowired
 	private DuenoService duenoService;
 	
 	@Autowired
 	private MascotaService mascotaService;
+
+	@Autowired
+	private EmpleadoService empleadoService;
 
 	//Se llama al cargar la pagina
 	@RequestMapping(value="/Index", method=RequestMethod.GET)
@@ -80,4 +89,31 @@ public class MascotaController {
 		
 	}
 	
+	//Se llama al cargar el form de creacion
+	@RequestMapping(value="/Historial", method=RequestMethod.GET)
+	public ModelAndView historialGet(){
+		ModelAndView m = new ModelAndView("Mascota/Historial");
+		
+		m.addObject("duenos", duenoService.getDuenos() );
+		m.addObject("mascota", new Mascota());
+		return m;
+	}
+	
+	//Se llama al cargar el form de creacion
+	@RequestMapping(value="/Historial", method=RequestMethod.POST)
+	public ModelAndView historialPost(@ModelAttribute("mascota") Mascota mascota,
+			@ModelAttribute("rutDueno")String rutDueno,
+			@ModelAttribute("rutEmpleado")String rutEmpleado,	
+			@ModelAttribute("idMascota")String idMascota,				
+			@ModelAttribute("ano")String ano,
+			@ModelAttribute("mes")String mes,
+			@ModelAttribute("dia")String dia
+						
+			){
+		ModelAndView m = new ModelAndView("Mascota/Historial");
+		
+		m.addObject("duenos", duenoService.getDuenos() );
+		m.addObject("mascota", new Mascota());
+		return m;
+	}
 }

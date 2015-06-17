@@ -103,7 +103,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Ficha de Atención</h1>
+                    <h1 class="page-header">Historial Clínico Mascota</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -112,166 +112,143 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Ingreso de Ficha de Atención
+                            Filtro de Historial Clínico Mascota
                         </div>
-                        <form:form action="/Anizooft/FichaAtencion/Create" modelAttribute="mascota" method="post">
+                        <form:form action="/Anizooft/Mascota/Historial" modelAttribute="mascota" method="post">
 	                        <div class="panel-body">
 	                            <div class="row">
-	                                <div class="col-lg-6">
-	                                	<div class="form-group">
-	                                		<button type="submit" id="desdeReserva" class="btn btn-default">Crear desde Reserva...</button>
-	                                	</div>
-                                        <div class="form-group">
-                                            <label>Dueños</label>
-                                            <select name="rutDueno" id="rutDueno" class="form-control script-obligatorio">
-                                                <option label="(Seleccione)" value="">Seleccione...</option>
-		                                           <c:if  test="${!empty duenos}">
-		                                                <c:forEach items="${duenos}" var="cur">
-		                                                	<c:choose>
-			                                                    <c:when test="${rutDueno == cur.rutdueño}">
-			                                                    	<option value="${cur.rutdueño}" selected="selected">${cur.rutdueño} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:when>
-			                                                    <c:otherwise>
-			                                                        <option value="${cur.rutdueño}">${cur.rutdueño} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:otherwise>
-			                                                </c:choose>
-		                                                   
-		                                                </c:forEach>
-		                                           </c:if>
-		                                   </select>
-		                                   <input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
-		                                   
+	                                <div class="col-lg-10">
+	                                	<div class="col-lg-4">
+	                                        <div class="form-group">
+	                                            <label>Dueños</label>
+	                                            <select name="rutDueno" id="rutDueno" class="form-control">
+	                                                <option label="(Seleccione)" value="">Seleccione...</option>
+			                                           <c:if  test="${!empty duenos}">
+			                                                <c:forEach items="${duenos}" var="cur">
+			                                                	<c:choose>
+				                                                    <c:when test="${rutDueno == cur.rutdueño}">
+				                                                    	<option value="${cur.rutdueño}" selected="selected">${cur.rutdueño} - ${cur.nombre} ${cur.apellido}</option>
+				                                                    </c:when>
+				                                                    <c:otherwise>
+				                                                        <option value="${cur.rutdueño}">${cur.rutdueño} - ${cur.nombre} ${cur.apellido}</option>
+				                                                    </c:otherwise>
+				                                                </c:choose>
+			                                                   
+			                                                </c:forEach>
+			                                           </c:if>
+			                                   </select>
+			                                   <input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
+			                                   
+	                                        </div>
+                                        </div>
+                                        <div class="col-lg-4">
+	                                        <div class="form-group">
+	                                            <label>Mascotas</label>
+	                                            <select name="idMascota" id="idMascota" class="form-control">
+	                                                <option label="(Seleccione)" value="" selected>Seleccione...</option>
+			                                           <c:if  test="${!empty mascotas}">
+			                                                <c:forEach items="${mascotas}" var="mascota">
+			                                                   <option value="${mascota.idmascota}">${mascota.idmascota} - ${mascota.nombre}</option>
+			                                                </c:forEach>
+			                                           </c:if>
+			                                   </select>
+	                                        </div>
+                                        </div>
+                                        <div class="col-lg-4">
+	                                    	<div class="form-group">
+	                                        	<label>Veterinario</label>
+	                                            <select name="rutEmpleado" id="rutEmpleado" class="form-control">
+	                                            	<option label="(Seleccione)" value="">Seleccione..</option>
+			                                          
+			                                        	<c:if  test="${!empty empleados}">
+			                                          
+			                                            	<c:forEach items="${empleados}" var="cur">
+			                                                	
+				                                            	<c:choose>
+				                                                	<c:when test="${rutEmpleado == cur.rutempleado}">
+				                                                    	<option value="${cur.rutempleado}" selected="selected">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
+				                                                    </c:when>
+				                                                    <c:otherwise>
+				                                                    	<option value="${cur.rutempleado}">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
+				                                                    </c:otherwise>
+				                                                </c:choose>
+			                                                   
+			                                                </c:forEach>
+			                                           	</c:if>
+			                                	</select>
+			                            	<input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
+		                                </div>   
                                         </div>
                                         <div class="form-group">
-                                            <label>Mascotas</label>
-                                            <select name="idMascota" id="idMascota" class="form-control script-obligatorio">
-                                                <option label="(Seleccione)" value="" selected>Seleccione...</option>
-		                                           <c:if  test="${!empty mascotas}">
-		                                                <c:forEach items="${mascotas}" var="mascota">
-		                                                   <option value="${mascota.idmascota}">${mascota.idmascota} - ${mascota.nombre}</option>
-		                                                </c:forEach>
-		                                           </c:if>
-		                                   </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Veterinario</label>
-                                            <select name="rutEmpleado" id="rutEmpleado" class="form-control script-obligatorio">
-                                                <option label="(Seleccione)" value="">Seleccione..</option>
-		                                          
-		                                           <c:if  test="${!empty empleados}">
-		                                          
-		                                                <c:forEach items="${empleados}" var="cur">
-		                                                	
-			                                                <c:choose>
-			                                                    <c:when test="${rutEmpleado == cur.rutempleado}">
-			                                                    	<option value="${cur.rutempleado}" selected="selected">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:when>
-			                                                    <c:otherwise>
-			                                                        <option value="${cur.rutempleado}">${cur.rutempleado} - ${cur.nombre} ${cur.apellido}</option>
-			                                                    </c:otherwise>
-			                                                </c:choose>
-		                                                   
-		                                                </c:forEach>
-		                                           </c:if>
-		                                   </select>
-		                                   <input type="hidden" id="selectMascota" name="selectMascota" value="N"/> 
-		                                   
-                                        </div>
-                                        <div class="form-group">
-                                       <div class="col-lg-4">
-                                           <label>Año</label>
-                                           <select name="ano" class="form-control">
-                                               <option selected>2015</option>
-                                               <option>2016</option>
-                                           </select>
-                                       </div>
-                                       </div>
-                                       <div class="col-lg-4">
-                                       <div class="form-group">
-                                           <label>Mes</label>
-                                           <select name="mes" class="form-control">
-                                               <option value="1" selected>Enero</option>
-                                               <option value="2">Febrero</option>
-                                               <option value="3">Marzo</option>
-                                               <option value="4">Abril</option>
-                                               <option value="5">Mayo</option>
-                                               <option value="6">Junio</option>
-                                               <option value="7">Julio</option>
-                                               <option value="8">Agosto</option>
-                                               <option value="9">Septiembre</option>
-                                               <option value="10">Octubre</option>
-                                               <option value="11">Noviembre</option>
-                                               <option value="12">Diciembre</option>
-                                           </select>
-                                       </div>
-                                       </div>
-                                       <div class="col-lg-4">
-                                       <div class="form-group">
-                                           <label>Día</label>
-                                           <select name="dia" class="form-control">
-                                               <option value="" selected>seleccione</option>
-                                               <option value="1" selected>01</option>
-                                               <option value="2">02</option>
-                                               <option value="3">03</option>
-                                               <option value="4">04</option>
-                                               <option value="5">05</option>
-                                               <option value="6">06</option>
-                                               <option value="7">07</option>
-                                               <option value="8">08</option>
-                                               <option value="9">09</option>
-                                               <option value="10">10</option>
-                                               <option value="11">11</option>
-                                               <option value="12">12</option>
-                                               <option value="13">13</option>
-                                               <option value="14">14</option>
-                                               <option value="15">15</option>
-                                               <option value="16">16</option>
-                                               <option value="17">17</option>
-                                               <option value="18">18</option>
-                                               <option value="19">19</option>
-                                               <option value="20">20</option>
-                                               <option value="21">21</option>
-                                               <option value="22">22</option>
-                                               <option value="23">23</option>
-                                               <option value="24">24</option>
-                                               <option value="25">25</option>
-                                               <option value="26">26</option>
-                                               <option value="27">27</option>
-                                               <option value="28">28</option>
-                                               <option value="29">29</option>
-                                               <option value="30">30</option>
-                                               <option value="31">31</option>
-                                           </select>
-                                       </div>
-                                       </div>
-                                        <div class="form-group">
-                                            <label>Hora</label>
-                                            <select name="hora" class="form-control script-obligatorio">
-                                                <option value="" selected>seleccione</option>
-                                                <option value="09:00">09:00 AM</option>
-                                                <option value="09:30">09:30 AM</option>
-                                                <option value="10:00">10:00 AM</option>
-                                                <option value="10:30">10:30 AM</option>
-                                                <option value="11:00">11:00 AM</option>
-                                                <option value="11:30">11:30 AM</option>
-                                                <option value="12:00">12:00 PM</option>
-                                                <option value="12:30">12:30 PM</option>
-                                                <option value="13:00">13:00 PM</option>
-                                                <option value="13:30">13:30 PM</option>
-                                                <option value="14:00">14:00 PM</option>
-                                                <option value="14:30">14:30 PM</option>
-                                                <option value="15:00">15:00 PM</option>
-                                                <option value="15:30">15:30 PM</option>
-                                                <option value="16:00">16:00 PM</option>
-                                                <option value="16:30">16:30 PM</option>
-                                                <option value="17:00">17:00 PM</option>
-                                                <option value="17:30">17:30 PM</option>
-                                                <option value="18:00">18:00 PM</option>
-                                            </select>
-                                        </div>
-                                        
+	                                       	<div class="col-lg-4">
+	                                        	<label>Año</label>
+	                                           	<select name="ano" class="form-control">
+	                                            	<option selected>2015</option>
+	                                               	<option>2016</option>
+	                                           	</select>
+	                                       	</div>
+                                       	</div>
+                                       	<div class="col-lg-4">
+	                                    	<div class="form-group">
+	                                        	<label>Mes</label>
+	                                           	<select name="mes" class="form-control">
+		                                       		<option value="1" selected>Enero</option>
+		                                            <option value="2">Febrero</option>
+		                                            <option value="3">Marzo</option>
+		                                            <option value="4">Abril</option>
+		                                            <option value="5">Mayo</option>
+		                                            <option value="6">Junio</option>
+		                                            <option value="7">Julio</option>
+		                                            <option value="8">Agosto</option>
+		                                            <option value="9">Septiembre</option>
+		                                            <option value="10">Octubre</option>
+		                                            <option value="11">Noviembre</option>
+		                                            <option value="12">Diciembre</option>
+	                                          	</select>
+	                                       	</div>
+                                       	</div>
+                                       	<div class="col-lg-4">
+	                                   		<div class="form-group">
+	                                        	<label>Día</label>
+	                                           	<select name="dia" class="form-control">
+	                                               	<option value="" selected>seleccione</option>
+	                                               	<option value="1" selected>01</option>
+	                                               	<option value="2">02</option>
+	                                               	<option value="3">03</option>
+	                                               	<option value="4">04</option>
+	                                               	<option value="5">05</option>
+	                                               	<option value="6">06</option>
+	                                               	<option value="7">07</option>
+	                                               	<option value="8">08</option>
+	                                               	<option value="9">09</option>
+	                                               	<option value="10">10</option>
+	                                               	<option value="11">11</option>
+	                                               	<option value="12">12</option>
+	                                               	<option value="13">13</option>
+	                                               	<option value="14">14</option>
+	                                               	<option value="15">15</option>
+	                                               	<option value="16">16</option>
+	                                               	<option value="17">17</option>
+	                                               	<option value="18">18</option>
+	                                               	<option value="19">19</option>
+	                                               	<option value="20">20</option>
+	                                               	<option value="21">21</option>
+	                                               	<option value="22">22</option>
+	                                               	<option value="23">23</option>
+	                                               	<option value="24">24</option>
+	                                               	<option value="25">25</option>
+	                                               	<option value="26">26</option>
+	                                               	<option value="27">27</option>
+	                                               	<option value="28">28</option>
+	                                               	<option value="29">29</option>
+	                                               	<option value="30">30</option>
+	                                               	<option value="31">31</option>
+	                                           	</select>
+	                                   		</div>
+                                       	</div>
+                                                                               
                                         <button type="reset" id="limpiarForm" class="btn btn-default">Cancelar</button>
-                                        <button type="submit"  onclick="return confirma();" class="btn btn-default">Guardar</button>
+                                        <button type="submit"  onclick="return confirma();" class="btn btn-default">Buscar</button>
                                     
 	                                </div>
 	                                <!-- /.col-lg-6 (nested) -->

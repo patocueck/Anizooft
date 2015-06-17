@@ -92,10 +92,13 @@
                         </li>
                         
                         <li>
-                            <a href="../Mascota/Create"><i class="fa fa-edit fa-fw"></i> Inscribir Mascota</a>
+                            <a href="../Mascota/Create"><i class="fa fa-paw fa-fw"></i> Inscribir Mascota</a>
                         </li>
                         <li>
-                            <a href="../"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="../Mascota/Historial"><i class="fa fa-folder-open fa-fw"></i> Historial Clínico Mascota</a>
+                        </li>
+                        <li>
+                            <a href="../"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>

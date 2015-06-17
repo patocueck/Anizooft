@@ -91,7 +91,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="../../FichaAtencion/Index"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="../../FichaAtencion/Index"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>

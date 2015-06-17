@@ -77,7 +77,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Buscar...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -88,10 +88,10 @@
                         </li>
                         
                         <li>
-                            <a href="../Dueno/Create"><i class="fa fa-edit fa-fw"></i> Inscribir Dueño</a>
+                            <a href="../Dueno/Create"><i class="fa fa-user fa-fw"></i> Inscribir Dueño</a>
                         </li>
                         <li>
-                            <a href="../"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="../"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>

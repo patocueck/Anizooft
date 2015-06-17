@@ -82,7 +82,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Buscar...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -93,16 +93,16 @@
                         </li>
                         
                         <li>
-                            <a href="Dueno/Index"><i class="fa fa-edit fa-fw"></i> Dueño</a>
+                            <a href="Dueno/Index"><i class="fa fa-user fa-fw"></i> Dueño</a>
                         </li>
                         <li>
-                            <a href="Mascota/Index"><i class="fa fa-edit fa-fw"></i> Mascota</a>
+                            <a href="Mascota/Index"><i class="fa fa-paw fa-fw"></i> Mascota</a>
                         </li>
                         <li>
-                            <a href="FichaAtencion/Index"><i class="fa fa-edit fa-fw"></i> Ficha de Atención</a>
+                            <a href="FichaAtencion/Index"><i class="fa fa-file-text fa-fw"></i> Ficha de Atención</a>
                         </li>
-                         <li>
-                            <a href="Reserva/Index"><i class="fa fa-edit fa-fw"></i> Reserva de Hora</a>
+                        <li>
+                            <a href="Reserva/Index"><i class="fa fa-clock-o fa-fw"></i> Reserva de Hora</a>
                         </li>
                     </ul>
                 </div>

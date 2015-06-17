@@ -92,10 +92,10 @@
                         </li>
                         
                         <li>
-                            <a href="../FichaAtencion/Create"><i class="fa fa-edit fa-fw"></i> Ingresar Ficha de Atención</a>
+                            <a href="../FichaAtencion/Create"><i class="fa fa-file-text fa-fw"></i> Ingresar Ficha de Atención</a>
                         </li>
                         <li>
-                            <a href="../"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="../"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>
@@ -148,7 +148,7 @@
 	                                            <td>
 	                                            	<a href='../Convenio/Create/'><i class='fa fa-edit fa-lg' title='Editar'></i></a>
 	                                            	<a href='../Convenio/Details/${curr.idatencion}'><i class='fa fa-list-alt fa-lg' title='Detalle'></i></a>
-	                                            	<a href='../FichaAtencion/Atender/${curr.idatencion}'><i class='fa fa-paw fa-lg' title='Atender/Cancelar'></i></a>                                            
+	                                            	<a href='../FichaAtencion/Atender/${curr.idatencion}'><i class='fa fa-stethoscope fa-lg' title='Atender/Cancelar'></i></a>                                            
 	                                            </td>
                                         	</tr>
                                          </c:forEach>

@@ -76,7 +76,7 @@ public class FichaAtencionController {
 				@ModelAttribute("selectMascota")String selectMascota
 				){
 			ModelAndView mensaje = new ModelAndView("Varios/Mensaje");
-			ModelAndView m = new ModelAndView("FichaAtencion/Create");
+			ModelAndView m = new ModelAndView("FichaAtencion/Create"); 
 			
 			
 			if(selectMascota.equalsIgnoreCase("S")){
