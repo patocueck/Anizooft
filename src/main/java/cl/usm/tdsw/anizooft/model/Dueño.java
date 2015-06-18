@@ -16,8 +16,8 @@ public class Dueño implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@SequenceGenerator(name="DUEÑO_RUTDUEÑO_GENERATOR" )
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DUEÑO_RUTDUEÑO_GENERATOR")
+	//@SequenceGenerator(name="DUEÑO_RUTDUEÑO_GENERATOR" )
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="DUEÑO_RUTDUEÑO_GENERATOR")
 	private String rutdueño;
 
 	private String apellido;
