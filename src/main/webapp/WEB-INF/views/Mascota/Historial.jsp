@@ -54,8 +54,6 @@
             </div>
             <!-- /.navbar-header -->
 
-            <!-- /.navbar-header -->
-
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -247,7 +245,7 @@
 	                                   		</div>
                                        	</div>
                                                                                
-                                        <button type="reset" id="limpiarForm" class="btn btn-default">Cancelar</button>
+                                        <button type="reset" id="limpiarForm" class="btn btn-default">Limpiar</button>
                                         <button type="submit"  onclick="return confirma();" class="btn btn-default">Buscar</button>
                                     
 	                                </div>
@@ -256,6 +254,43 @@
 	                            <!-- /.row (nested) -->
 	                        </div>
                         </form:form>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Resultado
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="dataTable_wrapper">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Dueño</th>
+                                            <th>Nombre Mascota</th>
+                                            <th>Fecha atención</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <c:forEach items="${mascotas}" var="curr">
+                                            <tr class="odd gradeX">
+	                                            <td>
+	                                            	${curr.dueño.rutdueño} - ${curr.dueño.nombre}
+	                                            </td>
+	                                            <td>${curr.idmascota} - ${curr.nombre}</td>
+	                                            <td>${curr.nombre}</td>
+                                        	</tr>
+                                         </c:forEach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
@@ -275,6 +310,10 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+	<!-- DataTables JavaScript -->
+    <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+	
     <!-- Metis Menu Plugin JavaScript -->
     <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/bower_components/metisMenu/dist/metisMenu.min.js"></script>
 
@@ -282,8 +321,9 @@
     <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
-    	$("#desdeReserva").click(function(){
-    		$("form").attr("action", "/Anizooft/Reserva/Index");
+    	
+    	$('#dataTables-example').DataTable({
+            responsive: true
     	});
     	
     	$("#rutDueno").change(function(){
@@ -461,6 +501,7 @@ function revisarDigito2( crut )
 
 	return true
 }
+
 
 function Rut(current){
         oRut = current;

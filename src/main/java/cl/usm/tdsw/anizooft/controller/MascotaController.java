@@ -89,11 +89,11 @@ public class MascotaController {
 		
 	}
 	
-	//Se llama al cargar el form de creacion
+	//Se llama al form de Historial desde el Index
 	@RequestMapping(value="/Historial", method=RequestMethod.GET)
 	public ModelAndView historialGet(){
 		ModelAndView m = new ModelAndView("Mascota/Historial");
-		
+		       
 		m.addObject("duenos", duenoService.getDuenos() );
 		m.addObject("mascota", new Mascota());
 		return m;
@@ -107,10 +107,27 @@ public class MascotaController {
 			@ModelAttribute("idMascota")String idMascota,				
 			@ModelAttribute("ano")String ano,
 			@ModelAttribute("mes")String mes,
-			@ModelAttribute("dia")String dia
+			@ModelAttribute("dia")String dia,
+			@ModelAttribute("selectMascota")String selectMascota
 						
 			){
 		ModelAndView m = new ModelAndView("Mascota/Historial");
+		
+		if(selectMascota.equalsIgnoreCase("S")){
+			Dueño dueno = duenoService.getByRut(rutDueno);
+			List<Mascota> mascotas = mascotaService.getMascotas(dueno);
+			m.addObject("duenos", duenoService.getDuenos() );
+			m.addObject("empleados", empleadoService.getAll());
+			m.addObject("mascotas", mascotas);
+			m.addObject("rutDueno", rutDueno);
+			m.addObject("rutEmpleado", rutEmpleado);
+			m.addObject("idMascota", idMascota);
+			m.addObject("ano", ano);
+			m.addObject("mes", mes);
+			m.addObject("dia", dia);
+			return m;
+		}
+				
 		
 		m.addObject("duenos", duenoService.getDuenos() );
 		m.addObject("mascota", new Mascota());
