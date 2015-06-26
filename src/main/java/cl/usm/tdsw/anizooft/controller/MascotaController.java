@@ -109,7 +109,8 @@ public class MascotaController {
 			@ModelAttribute("mes")String mes,
 			@ModelAttribute("dia")String dia,
 			@ModelAttribute("selectMascota")String selectMascota
-						
+	//		@ModelAttribute("hBuscar")String hBuscar //Trae el valor del hidden del botón buscar
+
 			){
 		ModelAndView m = new ModelAndView("Mascota/Historial");
 		
@@ -127,6 +128,27 @@ public class MascotaController {
 			m.addObject("dia", dia);
 			return m;
 		}
+/*		else if (hBuscar.equalsIgnoreCase("S")){
+			Dueño dueno = duenoService.getByRut(rutDueno);
+			List<Mascota> mascotas = mascotaService.getMascotas(dueno);
+			m.addObject("duenos", duenoService.getDuenos() );
+			m.addObject("empleados", empleadoService.getAll());
+			m.addObject("mascotas", mascotas);
+			m.addObject("rutDueno", rutDueno);
+			m.addObject("rutEmpleado", rutEmpleado);
+			m.addObject("idMascota", idMascota);
+			m.addObject("ano", ano);
+			m.addObject("mes", mes);
+			m.addObject("dia", dia);
+			hBuscar = "N";
+			m.addObject("hBuscar",hBuscar);
+			return m;
+		} */
+		//else {
+		//	Dueño dueno = duenoService.getByRut(rutDueno);
+		//	m.addAllObjects(modelMap);
+		//	return m;
+		//}
 				
 		
 		m.addObject("duenos", duenoService.getDuenos() );

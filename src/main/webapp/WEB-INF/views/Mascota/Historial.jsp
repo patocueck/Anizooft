@@ -101,7 +101,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Historial Clínico Mascota</h1>
+                    <h1 class="page-header">Historial Clínico Mascota Loca</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -247,7 +247,7 @@
                                                                                
                                         <button type="reset" id="limpiarForm" class="btn btn-default">Limpiar</button>
                                         <button type="submit"  onclick="return confirma();" class="btn btn-default">Buscar</button>
-                                    
+                        
 	                                </div>
 	                                <!-- /.col-lg-6 (nested) -->
 	                            </div>
@@ -425,6 +425,7 @@
             alert("Los campos marcados con rojo son obligatorios.");
             return false;
         }
+    //    $("#hBuscar").val("S");//Yo asigno una S al hidden buscar
         return true;
         //$('#convenio').submit();
     }
