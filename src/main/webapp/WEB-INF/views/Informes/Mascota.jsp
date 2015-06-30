@@ -121,11 +121,29 @@
                                 <div class="col-md-4 col-sm-4">
                                     <div class="form-group">
                                         <label>Mascota</label>
-                                        <select name="idComercio" class="form-control">
+                                        <select name="idMascota" class="form-control">
                                             <option value="">(Todas)</option>
                                             <c:if  test="${!empty mascotaList}">
-                                                <c:forEach items="${mascotaList}" var="emp">
-                                                    <option value="${emp.idmascota}">${emp.dueño.rutdueño} - ${emp.nombre}</option>
+                                                <c:forEach items="${mascotaList}" var="mascota">
+                                                    <option value="${mascota.idmascota}">(${mascota.dueño.rutdueño}) / (${mascota.idmascota}) ${mascota.nombre}</option>
+                                                </c:forEach>
+                                            </c:if>
+                                        </select>
+                                        <label>Dueño</label>
+                                        <select name="idDueño" class="form-control">
+                                            <option value="">(Todos)</option>
+                                            <c:if  test="${!empty dueñoList}">
+                                                <c:forEach items="${dueñoList}" var="dueño">
+                                                    <option value="${dueño.rutdueño}">(${dueño.rutdueño}) ${dueño.nombre} ${dueño.apellido} </option>
+                                                </c:forEach>
+                                            </c:if>
+                                        </select>
+                                        <label>Empleado</label>
+                                        <select name="idEmpleado" class="form-control">
+                                            <option value="">(Todos)</option>
+                                            <c:if  test="${!empty empleadoList}">
+                                                <c:forEach items="${empleadoList}" var="empleado">
+                                                    <option value="${empleado.rutempleado}">(${empleado.rutempleado}) ${empleado.nombre} ${empleado.apellido} </option>
                                                 </c:forEach>
                                             </c:if>
                                         </select>
@@ -151,6 +169,7 @@
 <!--                                         <option value="mas de 1000">más de 1000</option> -->
 <!--                                     </select> -->
 <!--                                 </div> -->
+                            	</div>
                             </div>
                         </form>
 
@@ -174,18 +193,18 @@
                                     <thead>
                                         <tr>
                                             <th>Dueño</th>
-                                            <th>Nombre Mascota</th>
+                                            <th>Mascota</th>
+                                            <th>Empleado</th>
                                             <th>Cantidad Atenciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${mascotas}" var="curr">
+                                        <c:forEach items="${informeList}" var="informe">
                                             <tr class="odd gradeX">
-	                                            <td>
-	                                            	${curr.dueño.rutdueño}
-	                                            </td>
-	                                            <td>${curr.idmascota}</td>
-	                                            <td>${curr.nombre}</td>
+	                                            <td>(${informe.rutdueño}) ${informe.nombredueño} ${informe.apellidodueño}</td>
+	                                            <td>(${informe.idmascota}) ${informe.nombremascota} ${informe.razamascota}</td>
+	                                            <td>(${informe.rutempleado}) ${informe.nombreempleado} ${informe.apellidoempleado}</td>
+	                                            <td>${informe.atenciones}</td>
                                         	</tr>
                                          </c:forEach>
                                     </tbody>

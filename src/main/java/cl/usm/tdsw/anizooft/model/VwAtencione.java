@@ -1,7 +1,9 @@
 package cl.usm.tdsw.anizooft.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -12,7 +14,16 @@ import java.util.Date;
  */
 @Entity
 @Table(name="VW_ATENCIONES")
-@NamedQuery(name="VwAtencione.findAll", query="SELECT v FROM VwAtencione v")
+//IC
+//Se agregan NamedQuery (LMD/30-06-2015)
+@NamedQueries({
+@NamedQuery(name="VwAtencione.findAll", query="SELECT v FROM VwAtencione v"),
+@NamedQuery(name="VwAtencione.findByRutDueño", query="SELECT v FROM VwAtencione v where v.rutdueño = :rutdueño"),
+@NamedQuery(name="VwAtencione.findByRutEmpleado", query="SELECT v FROM VwAtencione v where v.rutempleado = :rutempleado"),
+@NamedQuery(name="VwAtencione.findByIdMascota", query="SELECT v FROM VwAtencione v where v.idmascota = :idmascota"),
+@NamedQuery(name="VwAtencione.findByFechaHoraAtencion", query="SELECT v FROM VwAtencione v where v.fechahoraatencion >= :fechahoraatencion and v.fechahoraatencion <= :fechahoraatencion")
+})
+//FC
 public class VwAtencione implements Serializable {
 	private static final long serialVersionUID = 1L;
 

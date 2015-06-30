@@ -13,7 +13,15 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="VW_RESUMEN_ATENCIONES")
+//IC
+//Se agregan NamedQuery (LMD/30-06-2015)
+@NamedQueries({
 @NamedQuery(name="VwResumenAtencione.findAll", query="SELECT v FROM VwResumenAtencione v")
+//@NamedQuery(name="VwResumenAtencione.findByIdMascota", query="SELECT v FROM VwResumenAtencione v where v.idmascota = :idmascota"),
+//@NamedQuery(name="VwResumenAtencione.findByRutDueño", query="SELECT v FROM VwResumenAtencione v where v.rutdueño = :rutdueño"),
+//@NamedQuery(name="VwResumenAtencione.findByRutEmpleado", query="SELECT v FROM VwResumenAtencione v where v.rutempleado = :rutempleado")
+})
+//FC
 public class VwResumenAtencione implements Serializable {
 	private static final long serialVersionUID = 1L;
 
