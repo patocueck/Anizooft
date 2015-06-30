@@ -32,7 +32,7 @@ public class InformeController {
 	
 	//Se llama al cargar la página informe
 	@RequestMapping(value="/Mascota", method=RequestMethod.GET)
-	public ModelAndView mascotaGet(){
+	public ModelAndView informeGet(){
 		ModelAndView m = new ModelAndView("Informes/Mascota");
 			
 		List<VwResumenAtencione> informes = informeService.getAll();
@@ -41,9 +41,26 @@ public class InformeController {
 		List<Empleado> empleados = empleadoService.getAll();
 		
 		m.addObject("informeList", informes);
-		//m.addObject("mascotaList", mascotas);
-		//m.addObject("dueñoList", dueños);
-		//m.addObject("empleadoList", empleados);
+		m.addObject("mascotaList", mascotas);
+		m.addObject("dueñoList", dueños);
+		m.addObject("empleadoList", empleados);
+		
+		return m;
+	}
+	
+	@RequestMapping(value="/Mascota", method=RequestMethod.POST)
+	public ModelAndView informePost(){
+		ModelAndView m = new ModelAndView("Informes/Mascota");
+			
+		List<VwResumenAtencione> informes = informeService.getAll();
+		List<Mascota> mascotas = mascotaService.getAll();
+		List<Dueño> dueños = dueñoService.getDuenos();
+		List<Empleado> empleados = empleadoService.getAll();
+		
+		m.addObject("informeList", informes);
+		m.addObject("mascotaList", mascotas);
+		m.addObject("dueñoList", dueños);
+		m.addObject("empleadoList", empleados);
 		
 		return m;
 	}
