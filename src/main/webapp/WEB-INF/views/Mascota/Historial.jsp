@@ -101,7 +101,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Historial Clínico Mascota Loca</h1>
+                    <h1 class="page-header">Historial Clínico Mascota</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -146,7 +146,16 @@
 	                                                <option label="(Seleccione)" value="" selected>Seleccione...</option>
 			                                           <c:if  test="${!empty mascotas}">
 			                                                <c:forEach items="${mascotas}" var="mascota">
-			                                                   <option value="${mascota.idmascota}">${mascota.idmascota} - ${mascota.nombre}</option>
+			                                                   
+			                                                <c:choose>
+				                                                    <c:when test="${idMascota == mascota.idmascota}">
+				                                                    	<option value="${mascota.idmascota}" selected="selected">${mascota.idmascota} - ${mascota.nombre}</option>
+				                                                    </c:when>
+				                                                    <c:otherwise>
+				                                                       <option value="${mascota.idmascota}">${mascota.idmascota} - ${mascota.nombre}</option>
+				                                                    </c:otherwise>
+				                                            </c:choose>
+			                                                
 			                                                </c:forEach>
 			                                           </c:if>
 			                                   </select>
