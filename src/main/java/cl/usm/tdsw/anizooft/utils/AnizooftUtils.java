@@ -11,4 +11,12 @@ public class AnizooftUtils {
 		
 		return sRutRet;
 	}
+	
+	public static boolean esVacio(String valor){
+		boolean resp = false;
+		
+		
+		return resp;
+	}
+	
 }

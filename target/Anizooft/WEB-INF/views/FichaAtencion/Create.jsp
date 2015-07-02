@@ -81,7 +81,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <input type="text" class="form-control" placeholder="Buscar...">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="button">
                                     <i class="fa fa-search"></i>
@@ -91,7 +91,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="Index"><i class="fa fa-edit fa-fw"></i> Volver</a>
+                            <a href="Index"><i class="fa fa-reply-all fa-fw"></i> Volver</a>
                         </li>
                     </ul>
                 </div>
@@ -118,6 +118,9 @@
 	                        <div class="panel-body">
 	                            <div class="row">
 	                                <div class="col-lg-6">
+	                                	<div class="form-group">
+	                                		<button type="submit" id="desdeReserva" class="btn btn-default">Crear desde Reserva...</button>
+	                                	</div>
                                         <div class="form-group">
                                             <label>Dueños</label>
                                             <select name="rutDueno" id="rutDueno" class="form-control script-obligatorio">
@@ -302,6 +305,10 @@
     <script src="http://ironsummitmedia.github.io/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js"></script>
 	<script type="text/javascript">
     $(document).ready(function() {
+    	$("#desdeReserva").click(function(){
+    		$("form").attr("action", "/Anizooft/Reserva/Index");
+    	});
+    	
     	$("#rutDueno").change(function(){
     		$("#selectMascota").val("S");
     		$("form").submit();

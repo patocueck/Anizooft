@@ -24,6 +24,7 @@
 		<class>cl.usm.tdsw.anizooft.model.Sucursal</class>
 		<class>cl.usm.tdsw.anizooft.model.VwAtencione</class>
 		<class>cl.usm.tdsw.anizooft.model.VwResumenAtencione</class>
+		<class>cl.usm.tdsw.anizooft.model.VwHistorial</class>
 		<properties>
 <!-- 			<property name="eclipselink.target-server" value="None"/> -->
 			<property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.WeblogicJtaPlatform" />

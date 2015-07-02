@@ -353,13 +353,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <c:forEach items="${mascotas}" var="curr">
+                                        <c:forEach items="${mascotaList}" var="curr">
                                             <tr class="odd gradeX">
 	                                            <td>
-	                                            	${curr.dueño.rutdueño} - ${curr.dueño.nombre}
+	                                            	${curr.rutdueño} - ${curr.nombreDueno}
 	                                            </td>
 	                                            <td>${curr.idmascota} - ${curr.nombre}</td>
-	                                            <td>${curr.nombre}</td>
+	                                            <td>${curr.fechaFormat}</td>
+<%-- 	                                            <td>${curr.fechahora}</td> --%>
                                         	</tr>
                                          </c:forEach>
                                     </tbody>

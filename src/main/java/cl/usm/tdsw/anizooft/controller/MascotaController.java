@@ -1,7 +1,13 @@
 package cl.usm.tdsw.anizooft.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,12 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import cl.usm.tdsw.anizooft.dao.MascotaDao;
 import cl.usm.tdsw.anizooft.model.Atencion;
 import cl.usm.tdsw.anizooft.model.Dueño;
 import cl.usm.tdsw.anizooft.model.Mascota;
 import cl.usm.tdsw.anizooft.service.AtencionService;
 import cl.usm.tdsw.anizooft.service.DuenoService;
 import cl.usm.tdsw.anizooft.service.EmpleadoService;
+import cl.usm.tdsw.anizooft.service.HistorialService;
 import cl.usm.tdsw.anizooft.service.MascotaService;
 
 @Controller
@@ -33,6 +41,8 @@ public class MascotaController {
 
 	@Autowired
 	private EmpleadoService empleadoService;
+	@Autowired
+	private HistorialService historialService;
 
 	//Se llama al cargar la pagina
 	@RequestMapping(value="/Index", method=RequestMethod.GET)
@@ -105,54 +115,94 @@ public class MascotaController {
 			@ModelAttribute("rutDueno")String rutDueno,
 			@ModelAttribute("rutEmpleado")String rutEmpleado,	
 			@ModelAttribute("idMascota")String idMascota,				
-			@ModelAttribute("ano")String ano,
-			@ModelAttribute("mes")String mes,
-			@ModelAttribute("dia")String dia,
+			@ModelAttribute("anoIni")String anoIni,
+			@ModelAttribute("mesIni")String mesIni,
+			@ModelAttribute("diaIni")String diaIni,				
+			@ModelAttribute("anoFin")String anoFin,
+			@ModelAttribute("mesFin")String mesFin,
+			@ModelAttribute("diaFin")String diaFin,
 			@ModelAttribute("selectMascota")String selectMascota
 	//		@ModelAttribute("hBuscar")String hBuscar //Trae el valor del hidden del botón buscar
 
 			){
 		ModelAndView m = new ModelAndView("Mascota/Historial");
 		
+		Dueño dueno = duenoService.getByRut(rutDueno);
+		List<Mascota> mascotas = mascotaService.getMascotas(dueno);
+		m.addObject("duenos", duenoService.getDuenos() );
+		m.addObject("empleados", empleadoService.getAll());
+		m.addObject("mascotas", mascotas);
+		m.addObject("rutDueno", rutDueno);
+		m.addObject("rutEmpleado", rutEmpleado);
+		m.addObject("idMascota", idMascota);
+		m.addObject("anoIni", anoIni);
+		m.addObject("mesIni", mesIni);
+		m.addObject("diaIni", diaIni);
+		m.addObject("anoFin", anoFin);
+		m.addObject("mesFin", mesFin);
+		m.addObject("diaFin", diaFin);
+		
 		if(selectMascota.equalsIgnoreCase("S")){
-			Dueño dueno = duenoService.getByRut(rutDueno);
-			List<Mascota> mascotas = mascotaService.getMascotas(dueno);
-			m.addObject("duenos", duenoService.getDuenos() );
-			m.addObject("empleados", empleadoService.getAll());
-			m.addObject("mascotas", mascotas);
-			m.addObject("rutDueno", rutDueno);
-			m.addObject("rutEmpleado", rutEmpleado);
-			m.addObject("idMascota", idMascota);
-			m.addObject("ano", ano);
-			m.addObject("mes", mes);
-			m.addObject("dia", dia);
+
 			return m;
 		}
-/*		else if (hBuscar.equalsIgnoreCase("S")){
-			Dueño dueno = duenoService.getByRut(rutDueno);
-			List<Mascota> mascotas = mascotaService.getMascotas(dueno);
-			m.addObject("duenos", duenoService.getDuenos() );
-			m.addObject("empleados", empleadoService.getAll());
-			m.addObject("mascotas", mascotas);
-			m.addObject("rutDueno", rutDueno);
-			m.addObject("rutEmpleado", rutEmpleado);
-			m.addObject("idMascota", idMascota);
-			m.addObject("ano", ano);
-			m.addObject("mes", mes);
-			m.addObject("dia", dia);
-			hBuscar = "N";
-			m.addObject("hBuscar",hBuscar);
-			return m;
-		} */
-		//else {
-		//	Dueño dueno = duenoService.getByRut(rutDueno);
-		//	m.addAllObjects(modelMap);
-		//	return m;
-		//}
-				
+
 		
-		m.addObject("duenos", duenoService.getDuenos() );
-		m.addObject("mascota", new Mascota());
+		
+		Integer iAnoIni = Integer.parseInt(anoIni);
+		Integer iMesIni = Integer.parseInt(mesIni);
+		Integer iDiaIni = Integer.parseInt(diaIni);
+		
+		Integer iAnoFin = Integer.parseInt(anoFin);
+		Integer iMesFin = Integer.parseInt(mesFin);
+		Integer iDiaFin = Integer.parseInt(diaFin);
+		
+		/*Date fechaInicio = new Date(iAnoIni,iMesIni,iDiaIni);
+		Date fechaFin = new Date(iAnoFin,iMesFin,iDiaFin);
+		fechaInicio.setYear(iAnoIni - 1900);
+		fechaFin.setYear(iAnoFin - 1900);
+		fechaInicio.setMonth(iMesIni - 1);
+		fechaFin.setMonth(iMesFin - 1);*/
+
+		String sFechaIni = iDiaIni.toString() +"/"+ iMesIni.toString() + "/" + iAnoIni.toString();
+		String sFechaFin = diaFin.toString() +"/"+ mesFin.toString() + "/" + anoFin.toString();
+		
+		
+		Calendar cal = Calendar.getInstance();
+		//String input = String.valueOf(inputDate);
+		cal.set(Calendar.YEAR, iAnoIni);
+		cal.set(Calendar.MONTH, iMesIni -1);
+		cal.set(Calendar.DAY_OF_MONTH, iDiaIni);
+		cal.set(Calendar.HOUR, 00);
+        cal.set(Calendar.MINUTE,00);
+        cal.set(Calendar.SECOND,00);
+		Date fechaInicio = cal.getTime();
+		
+		Calendar cal2 = Calendar.getInstance();
+		//String input = String.valueOf(inputDate);
+		cal2.set(Calendar.YEAR, iAnoFin);
+		cal2.set(Calendar.MONTH, iMesFin - 1);
+		cal2.set(Calendar.DAY_OF_MONTH, iDiaFin);
+		cal2.set(Calendar.HOUR, 23);
+        cal2.set(Calendar.MINUTE,59);
+        cal2.set(Calendar.SECOND,59);
+		Date fechaFin = cal2.getTime();
+		
+		
+//		SimpleDateFormat originalFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+//		Date fechaInicio = Date.from(Instant.now());
+//		Date fechaFin= Date.from(Instant.now());
+//		try {
+//			fechaInicio = originalFormat.parse(sFechaIni);
+//			fechaFin = originalFormat.parse(sFechaFin);
+//		} catch (ParseException e) {
+//			System.out.println("Error parseando");
+//			e.printStackTrace();
+//		}
+		
+		
+		m.addObject("mascotaList", historialService.getByBusqueda(rutDueno, idMascota, rutEmpleado, fechaInicio, fechaFin));
+		
 		return m;
 	}
 }

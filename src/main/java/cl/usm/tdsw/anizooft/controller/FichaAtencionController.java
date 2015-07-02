@@ -102,7 +102,7 @@ public class FichaAtencionController {
 			int iDia = Integer.parseInt(dia);
 			int iHor = Integer.parseInt(hora.split(":")[0]);
 			int iMin = Integer.parseInt(hora.split(":")[1]);			
-			Date horario = new Date(iAno,iMes,iDia,iHor,iMin);
+			Date horario = new Date(iAno,(iMes -1),iDia,iHor,iMin);
 			
 			atencion.setFechahora(horario);
 			atencion.setMascota(mascotaService.getById(Long.parseLong(idMascota)));
