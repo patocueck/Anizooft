@@ -16,10 +16,10 @@ import java.math.BigDecimal;
 //IC
 //Se agregan NamedQuery (LMD/30-06-2015)
 @NamedQueries({
-@NamedQuery(name="VwResumenAtencione.findAll", query="SELECT v FROM VwResumenAtencione v")
-//@NamedQuery(name="VwResumenAtencione.findByIdMascota", query="SELECT v FROM VwResumenAtencione v where v.idmascota = :idmascota"),
-//@NamedQuery(name="VwResumenAtencione.findByRutDueño", query="SELECT v FROM VwResumenAtencione v where v.rutdueño = :rutdueño"),
-//@NamedQuery(name="VwResumenAtencione.findByRutEmpleado", query="SELECT v FROM VwResumenAtencione v where v.rutempleado = :rutempleado")
+@NamedQuery(name="VwResumenAtencione.findAll", query="SELECT v FROM VwResumenAtencione v"),
+@NamedQuery(name="VwResumenAtencione.findByIdMascota", query="SELECT v FROM VwResumenAtencione v where v.idmascota = :idmascota"),
+@NamedQuery(name="VwResumenAtencione.findByRutDueño", query="SELECT v FROM VwResumenAtencione v where v.rutdueño = :rutdueño"),
+@NamedQuery(name="VwResumenAtencione.findByRutEmpleado", query="SELECT v FROM VwResumenAtencione v where v.rutempleado = :rutempleado")
 })
 //FC
 public class VwResumenAtencione implements Serializable {
@@ -39,7 +39,7 @@ public class VwResumenAtencione implements Serializable {
 
 	private String especialidadempleado;
 
-	private BigDecimal idmascota;
+	private Long idmascota;
 
 	private String nombredueño;
 
@@ -51,7 +51,7 @@ public class VwResumenAtencione implements Serializable {
 
 	private String rutdueño;
 
-	private BigDecimal rutempleado;
+	private Long rutempleado;
 
 	public VwResumenAtencione() {
 	}
@@ -104,11 +104,11 @@ public class VwResumenAtencione implements Serializable {
 		this.id = id;
 	}
 
-	public BigDecimal getIdmascota() {
+	public Long getIdmascota() {
 		return this.idmascota;
 	}
 
-	public void setIdmascota(BigDecimal idmascota) {
+	public void setIdmascota(Long idmascota) {
 		this.idmascota = idmascota;
 	}
 
@@ -152,11 +152,11 @@ public class VwResumenAtencione implements Serializable {
 		this.rutdueño = rutdueño;
 	}
 
-	public BigDecimal getRutempleado() {
+	public Long getRutempleado() {
 		return this.rutempleado;
 	}
 
-	public void setRutempleado(BigDecimal rutempleado) {
+	public void setRutempleado(Long rutempleado) {
 		this.rutempleado = rutempleado;
 	}
 

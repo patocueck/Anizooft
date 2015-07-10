@@ -105,7 +105,7 @@
                             <a href="Reserva/Index"><i class="fa fa-clock-o fa-fw"></i> Reserva de Hora</a>
                         </li>
                          <li>
-                            <a href="Informe/Mascota"><i class="fa fa-edit fa-fw"></i> Informe</a>
+                            <a href="Informes/Mascota"><i class="fa fa-edit fa-fw"></i> Informe</a>
                         </li>
                     </ul>
                 </div>
